@@ -17,11 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: docker login
-      env:
-        DOCKER_USER: ${{secrets.DOCKER_USER}}
-        DOCKER_TOKEN: ${{secrets.DOCKER_TOKEN}}
-      run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_TOKEN}}
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag resimon/gitlab_sendmail:latest
     - name: publish docker image
