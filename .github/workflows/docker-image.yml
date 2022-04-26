@@ -20,3 +20,5 @@ jobs:
       run: docker build . --file Dockerfile --tag resimon/gitlab_sendmail:latest
     - name: publish docker image
       run: docker push ${{secrets.DOCKER_USER}}/gitlab_sendmail:latest
+    - name: logout
+      run: docker logout
