@@ -1,0 +1,28 @@
+name: Docker Image CI
+
+on:
+  schedule:
+   - cron: '0 22 * * *'
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: docker login
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USER}}
+        DOCKER_TOKEN: ${{secrets.DOCKER_TOKEN}}
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag resimon/gitlab_sendmail:latest
+    - name: publish docker image
+      run: docker push ${{secrets.DOCKER_USER}}/gitlab_sendmail:latest
