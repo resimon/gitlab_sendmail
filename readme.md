@@ -1,7 +1,7 @@
 # Gitlab EE Build with sendmail
 
 
-# deprecated - sendmail has been included in gitlab-ee in the meanwhile
+# deprecated - sendmail has been included in gitlab-ee in the meantime
 
 ## Only latest image is built:
 
