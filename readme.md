@@ -1,5 +1,8 @@
 # Gitlab EE Build with sendmail
 
+
+# deprecated - sendmail has been included in gitlab-ee in the meanwhile
+
 ## Only latest image is built:
 
 https://hub.docker.com/r/resimon/gitlab_sendmail
